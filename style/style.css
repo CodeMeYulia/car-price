@@ -1,0 +1,16 @@
+.calc_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px dashed grey;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+}
+
+.input {
+    text-align: center;
+    font-size: medium;
+}
