@@ -10,7 +10,8 @@
     margin: auto;
 }
 
-.input {
+.input,
+.select {
     text-align: center;
     font-size: medium;
 }
