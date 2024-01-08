@@ -4,16 +4,11 @@ const inputs = document.querySelectorAll('.input');
 const brandSelect = document.getElementById('brandSelect');
 const modelSelect = document.getElementById('modelSelect');
 const price = document.querySelector('.price');
-let volume = document.getElementById('volume');
-price.innerHTML = '';
 let models = [];
 let values = [];
 let options = [];
 let option;
-let model;
-let basePrice = 0;
-
-let myCar;
+let basePrice;
 
 brandSelect.addEventListener('change', function () {
     //очищаем список моделей при смене бренда
@@ -46,47 +41,62 @@ brandSelect.addEventListener('change', function () {
         options.push(option);
     };
     //получаем базовую цену модели
-
     modelSelect.addEventListener('change', function (e) {
-        // model = e.target.innerText;
-        // console.log(model);
-        basePrice = e.target.value;
-        console.log(basePrice);
-        price.innerHTML = `базовая цена выбранной модели - <p> ${basePrice}</p>`;
+        basePrice = Number(e.target.value);
+
+        function addPriceOption() {
+
+            //добавляем топливо
+            //надбавка по умолчанию
+            let fuels = document.getElementById('fuel');
+            let fuelPrice = Number(document.querySelector('input[name = fuel]:checked').value);
+            //надбавка при выборе другого топлива
+            fuels.addEventListener('change', function () {
+                fuelPrice = Number(document.querySelector('input[name = fuel]:checked').value);
+                price.innerHTML = `
+                <p>базовая цена модели: ${basePrice}</p>
+                <p>надбавка за выбор топлива: ${fuelPrice}</p>
+                <p>надбавка за выбор объема: ${volumePrice}</p>
+                <p>Итого: ${basePrice + fuelPrice + volumePrice}</p>`;
+            })
+
+            //добавляем литраж
+            //надбавка за объем по умолчанию
+            let volume = document.getElementById('volume');
+            let myVolume = 1.1;
+            let volumePrice = 1100;
+            price.innerHTML = `
+                <p>базовая цена модели: ${basePrice}</p>
+                <p>надбавка за выбор топлива: ${fuelPrice}</p>
+                <p>надбавка за выбор объема: ${volumePrice}</p>
+                <p>Итого: ${basePrice + fuelPrice + volumePrice}</p>`;
+            //надбавка при выборе другого литража
+            volume.addEventListener('change', function () {
+                myVolume = Number(document.querySelector('input[name = volume]').value);
+                if (myVolume === 1.1) { volumePrice = 1100 } else
+                    if (myVolume === 1.5) { volumePrice = 1500 } else
+                        if (myVolume === 1.9) { volumePrice = 1900 } else
+                            if (myVolume === 2.3) { volumePrice = 2300 } else
+                                if (myVolume === 2.7) { volumePrice = 2700 } else
+                                    if (myVolume === 3.1) { volumePrice = 3100 } else { volumePrice = 3500 };
+                price.innerHTML = `
+                <p>базовая цена модели: ${basePrice}</p>
+                <p>надбавка за выбор топлива: ${fuelPrice}</p>
+                <p>надбавка за выбор объема: ${volumePrice}</p>
+                <p>Итого: ${basePrice + fuelPrice + volumePrice}</p>`;
+            })
+
+            //добавляем состояние
+
+
+
+        }
+        addPriceOption();
     })
 
-    // let result = basePrice + fuelPrice + volumePrice + conditionPrice + paywayPrice;
-    // price.innerHTML = `цена ${brandSelect.value} ${options.textContent} с выбранными параметрами - ${result}`;
-})
-
-//цена от типа топлива
-const fuels = document.getElementById('fuel');
-fuels.addEventListener('change', function () {
-    const myFuel = document.querySelector('input[name = fuel]:checked').value;
-    console.log(myFuel);
-    return myFuel;
-    price.innerHTML = 
-})
 
 
-//цена от объема двигателя - некорректно считает, исправить
-volume.addEventListener('change', function () {
-    volume = this.value;
-    let volumePrice = function () {
-        if (volume === 1.5) {
-            return 1200;
-        } else if (volume === 1.9) {
-            return 1400;
-        } else if (volume === 2.3) {
-            return 1600;
-        } else if (volume === 2.7) {
-            return 1800;
-        } else if (volume === 3.1) {
-            return 2000;
-        } else if (volume === 3.5) {
-            return 2400;
-        } else { return 1000 };
-    }
-    console.log(volume);
-    console.log(volumePrice());
+
+    //   + conditionPrice + paywayPrice;
 })
+

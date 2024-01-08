@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="calc_container">
+    <form class="calc" action="#" id="form" name="calc">
         <h1>Калькулятор стоимости авто</h1>
         <select class="select" name="brandSelect" id="brandSelect">
             <option class="brandSelect" value="null" selected>--выберите марку авто--</option>
@@ -24,18 +24,15 @@
         <br>
         <fieldset class="input" id="fuel">
             <legend>тип топлива</legend>
-            <label for="petrol"><input class="fuelselect" type="radio" name="fuel" id="petrol" value="1000"
-                    checked>бензин</label>
-            <label for="gas"><input class="fuelselect" type="radio" name="fuel" id="gas" value="1200">газ</label>
-            <label for="diesel"><input class="fuelselect" type="radio" name="fuel" id="diesel"
-                    value="1800">дизель</label>
-            <label for="electricity"><input class="fuelselect" type="radio" name="fuel" id="electricity"
-                    value="1900">электричество</label>
+            <label for="petrol"><input type="radio" name="fuel" id="petrol" value="1000" checked>бензин</label>
+            <label for="gas"><input type="radio" name="fuel" id="gas" value="1200">газ</label>
+            <label for="diesel"><input type="radio" name="fuel" id="diesel" value="1800">дизель</label>
+            <label for="electricity"><input type="radio" name="fuel" id="electricity" value="1900">электричество</label>
         </fieldset>
         <br>
-        <fieldset>
+        <fieldset id="volume">
             <legend>объем двигателя, л</legend>
-            <input class="input volume" type="number" id="volume" placeholder="1,1" min="1.1" max="3.5" step="0.4">
+            <input class="input volume" type="number" name="volume" placeholder="1.1" min="1.1" max="3.5" step="0.4">
         </fieldset>
         <br>
         </fieldset>
@@ -52,10 +49,11 @@
             <label for="cash"> <input type="radio" name="pay" id="cash">наличные</label>
             <label for="bill"></label><input type="radio" name="pay" id="bill">счет на юр. лицо</label>
         </fieldset>
-        <p class="price"></p>
-    </div>
+        <button id="bntCalc" type="button" disabled>расчитать цену</button>
+        <p class="price">
 
-
+        </p>
+    </form>
 
     <script src="./index.js"></script>
 </body>
