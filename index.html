@@ -12,44 +12,47 @@
     <div class="calc_container">
         <h1>Калькулятор стоимости авто</h1>
         <select class="select input" name="brandSelect" id="brandSelect">
-            <option value="0">--выберите марку авто--</option>
-            <option value="1">Reno</option>
-            <option value="2">Opel</option>
-            <option value="3">Mazda</option>
-            <option value="4">Jaguar</option>
+            <option class="brandSelect" value="null" selected>--выберите марку авто--</option>
+            <option class="brandSelect" value="Renault">Renault</option>
+            <option class="brandSelect" value="Opel">Opel</option>
+            <option class="brandSelect" value="Mazda">Mazda</option>
         </select>
         <br>
         <select class="select input" name="modelSelect" id="modelSelect">
-            <option value="0">--выберите модель авто--</option>
+            <option value="0" selected>--выберите модель авто--</option>
         </select>
         <br>
         <fieldset class="input">
             <legend>тип топлива</legend>
-            <input class="fuelselect" type="radio" name="fuel" id="petrol" value="1000" checked>
-            <label for="fuel">бензин</label>
-            <input class="fuelselect" type="radio" name="fuel" id="gas" value="1200"><label for="fuel">газ</label>
-            <input class="fuelselect" type="radio" name="fuel" id="diesel" value="1800"><label for="fuel">дизель</label>
-            <input class="fuelselect" type="radio" name="fuel" id="electricity" value="1800"><label
-                for="fuel">электричество</label>
+            <input class="fuelselect" type="radio" name="fuel" id="petrol" value="1000"><label
+                for="petrol">бензин</label>
+            <input class="fuelselect" type="radio" name="fuel" id="gas" value="1200"><label for="gas">газ</label>
+            <input class="fuelselect" type="radio" name="fuel" id="diesel" value="1800"><label
+                for="diesel">дизель</label>
+            <input class="fuelselect" type="radio" name="fuel" id="electricity" value="1900"><label
+                for="electricity">электричество</label>
         </fieldset>
         <br>
-
-        <label for="volume" value="">объем двигателя, л</label>
-        <input class="input volume" type="number" id="volume" name="volume" placeholder="1,1" min="1.1" max="3.5"
-            step="0.4">
+        <fieldset>
+            <legend>объем двигателя, л</legend>
+            <input class="input volume" type="number" id="volume" name="volume" placeholder="1,1" min="1.1" max="3.5"
+                step="0.4">
+        </fieldset>
         <br>
+        </fieldset>
         <fieldset class="input">
             <legend>состояние</legend>
-            <input class="condition" type="radio" name="condition" id="new"><label for="condition">новая</label>
-            <input class="condition" type="radio" name="condition" id="old"><label for="condition">подержаная</label>
+            <input type="radio" name="condition" id="new"><label for="new">новая</label>
+            <input type="radio" name="condition" id="old"><label for="old">подержаная</label>
         </fieldset>
         <br>
         <fieldset class="input">
             <legend>способ оплаты</legend>
-            <input class="pay" type="radio" name="pay" id="card"><label for="pay">карта</label>
-            <input class="pay" type="radio" name="pay" id="cash"><label for="pay">наличные</label>
-            <input class="pay" type="radio" name="pay" id="bill"><label for="pay">счет на юр. лицо</label>
+            <input type="radio" name="pay" id="card"><label for="card">карта</label>
+            <input type="radio" name="pay" id="cash"><label for="cash">наличные</label>
+            <input type="radio" name="pay" id="bill"><label for="bill">счет на юр. лицо</label>
         </fieldset>
+        <p class="price"></p>
     </div>
 
 
